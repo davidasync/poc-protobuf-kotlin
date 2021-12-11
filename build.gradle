@@ -1,0 +1,22 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.0'
+    id "com.google.protobuf" version "0.8.18"
+}
+
+group 'com.github.davidasync'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets.main.java.srcDirs += "${protobuf.generatedFilesBaseDir}/main/java"
+compileKotlin.dependsOn ':generateProto'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+    implementation "com.google.protobuf:protobuf-java:3.19.1"
+    implementation "com.google.protobuf:protobuf-java-util:3.19.1"
+    implementation "com.google.protobuf:protobuf-gradle-plugin:0.8.18"
+}
